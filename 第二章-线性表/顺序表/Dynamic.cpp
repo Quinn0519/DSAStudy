@@ -150,10 +150,9 @@ int main()
     ListDelete(L, 2, e);
     printf("被删除的是：%d \n", e);
     PrintfList(L);
-   
+
     printf("第二个位置的元素是：%d\n", GetElem(L, 2));
     printf("值为3的位置是：%d \n", LocateElem(L, 3));
-   
+
     return 0;
 }
-
