@@ -32,7 +32,6 @@ typedef struct
 
 int main()
 {
-    // 数组a作为静态链表，类型为 struct Node
     //  SLinkList a;等价于 struct Node a[MaxSize];
     SLinkList a;
 }
