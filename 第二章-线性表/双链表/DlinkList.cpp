@@ -97,7 +97,8 @@ bool DestoryList(DlinkList &L)
     L = NULL;
 }
 
-// 双链表的后向遍历
+// 实现按值查找和按位查找需使用遍历实现
+//  双链表的后向遍历
 void BackwardTraversal(DNode *p)
 {
     while (p != NULL)
@@ -122,12 +123,6 @@ void ForwardTraversal2(DNode *p)
     {
         p = p->prior;
     }
-}
-
-// 判断结点p是否为双链表的表尾结点
-bool isTail(DlinkList L, DNode *p)
-{
-    return (p->next == NULL);
 }
 
 int main()
