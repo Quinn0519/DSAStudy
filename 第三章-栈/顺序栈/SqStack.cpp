@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #define MaxSize 10
 
 typedef struct
@@ -25,7 +25,7 @@ bool StackEmpty(SqStack S)
 
     // 不空
     else
-        false;
+        return false;
 }
 
 // 进栈操作--向栈顶插入元素
@@ -74,6 +74,7 @@ bool GetTop(SqStack S, int &x)
 
     // x记录栈顶元素
     x = S.data[S.top];
+    return true;
 }
 
 // 销毁栈--函数运行结束后会自动回收内存
@@ -82,5 +83,15 @@ int main()
 {
     SqStack S;
     InitStack(S);
+
+    Push(S, 1);
+    Push(S, 2);
+    Push(S, 3);
+
+    int x = 0;
+    printf("%d\n", Push(S, x));
+
+    Pop(S, x);
+    printf("%d\n", Pop(S, x));
     return 0;
 }
