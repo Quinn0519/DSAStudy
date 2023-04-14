@@ -29,12 +29,12 @@ bool StackEmpty(SqStack S)
 }
 
 // 进栈操作--向栈顶插入元素
-int Push(SqStack &S, int x)
+bool Push(SqStack &S, int x)
 {
     // 判断是否栈满，栈满报错
     // 若初始化时，S.top=0 则栈满条件为 S.top==MaxSize
     if (S.top == MaxSize - 1)
-        return 0;
+        return false;
 
     // 指针加一
     S.top = S.top + 1;
@@ -45,11 +45,11 @@ int Push(SqStack &S, int x)
     // 先使top值加一在使用该值
     // 注：变量++，代表先使用该变量值在加一
 
-    return S.data[S.top];
+    return true;
 }
 
 // 出栈操作--向栈顶删除元素
-int Pop(SqStack &S, int &x)
+int Pop(SqStack &S)
 {
     // 栈空，报错
     if (S.top == -1)
@@ -58,7 +58,7 @@ int Pop(SqStack &S, int &x)
     // 栈顶元素先出栈--栈顶指针指向的元素的值赋给了x
     // 逻辑删除，实际数据还残留在内存中
     // 下面两行代码可以合并成 x=S.data[S.top--];
-    x = S.data[S.top];
+    int x = S.data[S.top];
     // 指针减一
     S.top--;
 
@@ -66,15 +66,15 @@ int Pop(SqStack &S, int &x)
 }
 
 // 查找--读取栈顶元素
-bool GetTop(SqStack S, int &x)
+int GetTop(SqStack S)
 {
     // 栈空，报错
     if (S.top == -1)
-        return false;
+        return -9999;
 
     // x记录栈顶元素
-    x = S.data[S.top];
-    return true;
+    int x = S.data[S.top];
+    return x;
 }
 
 // 销毁栈--函数运行结束后会自动回收内存
@@ -83,23 +83,21 @@ int main()
 {
     SqStack S;
     InitStack(S);
-    StackEmpty(S);
 
     Push(S, 1);
-    printf("第一个进栈的元素： %d\n", Push(S, 1));
+    printf("当前栈顶元素： %d\n", GetTop(S));
 
     Push(S, 2);
-    printf("第二个进栈的元素： %d\n", Push(S, 2));
+    printf("当前栈顶元素： %d\n", GetTop(S));
 
     Push(S, 3);
-    printf("第三个进栈的元素： %d\n", Push(S, 3));
+    printf("当前栈顶元素： %d\n", GetTop(S));
 
-    int x = 0;
-    printf("栈顶元素为: %d\n", GetTop(S, x));
+    printf("栈顶元素为: %d\n", GetTop(S));
 
-    printf("第一个出栈的元素： %d\n", Pop(S, x));
-    printf("第二个出栈的元素： %d\n", Pop(S, x));
-    printf("第三个出栈的元素： %d\n", Pop(S, x));
+    printf("第一个出栈的元素： %d\n", Pop(S));
+    printf("第二个出栈的元素： %d\n", Pop(S));
+    printf("第三个出栈的元素： %d\n", Pop(S));
 
     return 0;
 }
